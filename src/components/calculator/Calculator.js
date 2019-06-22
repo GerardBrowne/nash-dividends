@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 import "./Calculator.css";
 
@@ -46,56 +49,65 @@ class Calculator extends Component {
 
   render() {
     return (
-      <form className="form" noValidate autoComplete="off">
-        <TextField
-          label="Amount of NEX"
-          type="number"
-          margin="normal"
-          variant="outlined"
-          name="tokens"
-          value={this.state.tokens}
-          onChange={this.changeTokensHandler}
-        />
-
-        <br />
-        <TextField
-          label="Expected monthly fees"
-          type="number"
-          name="fees"
-          margin="normal"
-          variant="outlined"
-          value={this.state.fees}
-          onChange={this.changeFeesHandler}
-        />
-        <br />
-        <TextField
-          label="Stake percentage"
-          type="number"
-          name="stakeRate"
-          margin="normal"
-          variant="outlined"
-          value={this.state.stakeRate}
-          onChange={this.changeStakeHandler}
-        />
-        <br />
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          onClick={this.calculateDividends}
-        >
-          Submit
-        </Button>
-        <br />
-        <TextField
-          label="Monthly dividends"
-          margin="normal"
-          variant="outlined"
-          type="text"
-          value={this.state.result}
-          readOnly
-        />
-      </form>
+      <Container maxWidth="sm">
+        <Paper>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <TextField
+                label="Amount of NEX"
+                type="number"
+                margin="normal"
+                variant="filled"
+                name="tokens"
+                value={this.state.tokens}
+                onChange={this.changeTokensHandler}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Expected monthly fees"
+                type="number"
+                name="fees"
+                margin="normal"
+                variant="filled"
+                value={this.state.fees}
+                onChange={this.changeFeesHandler}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Stake percentage"
+                type="number"
+                name="stakeRate"
+                margin="normal"
+                variant="filled"
+                value={this.state.stakeRate}
+                onChange={this.changeStakeHandler}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                onClick={this.calculateDividends}
+              >
+                Submit
+              </Button>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Monthly dividends"
+                margin="normal"
+                variant="filled"
+                type="text"
+                value={this.state.result}
+                readOnly
+              />
+            </Grid>
+          </Grid>
+        </Paper>
+      </Container>
     );
   }
 }
