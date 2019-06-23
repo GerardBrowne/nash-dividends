@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
+import Form from "./Form";
 
 import "./Calculator.css";
 
@@ -41,73 +37,25 @@ class Calculator extends Component {
   calculateDividends = event => {
     const x =
       ((this.state.fees * this.state.tokens) / this.state.totalTokens) *
-      this.state.stakeRate;
+      (this.state.stakeRate / 100);
 
     this.setState({ result: x });
     event.preventDefault(event);
   };
 
   render() {
+    const { tokens, fees, stakeRate, result } = this.state;
     return (
-      <Container maxWidth="sm">
-        <Paper>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <TextField
-                label="Amount of NEX"
-                type="number"
-                margin="normal"
-                variant="filled"
-                name="tokens"
-                value={this.state.tokens}
-                onChange={this.changeTokensHandler}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Expected monthly fees"
-                type="number"
-                name="fees"
-                margin="normal"
-                variant="filled"
-                value={this.state.fees}
-                onChange={this.changeFeesHandler}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Stake percentage"
-                type="number"
-                name="stakeRate"
-                margin="normal"
-                variant="filled"
-                value={this.state.stakeRate}
-                onChange={this.changeStakeHandler}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                onClick={this.calculateDividends}
-              >
-                Submit
-              </Button>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Monthly dividends"
-                margin="normal"
-                variant="filled"
-                type="text"
-                value={this.state.result}
-                readOnly
-              />
-            </Grid>
-          </Grid>
-        </Paper>
-      </Container>
+      <Form
+        tokens={tokens}
+        fees={fees}
+        stakeRate={stakeRate}
+        result={result}
+        changeTokensHandler={this.changeTokensHandler}
+        changeFeesHandler={this.changeFeesHandler}
+        changeStakeHandler={this.changeStakeHandler}
+        calculateDividends={this.calculateDividends}
+      />
     );
   }
 }
