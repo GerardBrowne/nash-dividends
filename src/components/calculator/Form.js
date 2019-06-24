@@ -4,28 +4,42 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
+import { Card } from "@material-ui/core";
+// import Typography from "@material-ui/core/Typography";
+// import Slider from "@material-ui/lab/Slider";
 
 const Form = props => {
   const {
     tokens,
     fees,
     stakeRate,
-    result,
+    dividend,
     changeTokensHandler,
     changeFeesHandler,
     changeStakeHandler,
     calculateDividends
   } = props;
 
+  // function valuetext(value) {
+  //   return value;
+  // }
+
   return (
-    <Container maxWidth="sm">
-      <Paper>
-        <Grid container spacing={3}>
+    <Card>
+      <Container maxWidth="sm">
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: "100vh" }}
+        >
           <Grid item xs={12}>
+            <h3>Staking {tokens} NEX</h3>
             <TextField
               label="Amount of NEX"
-              type="number"
+              type="string"
               margin="normal"
               variant="filled"
               name="tokens"
@@ -33,10 +47,12 @@ const Form = props => {
               onChange={changeTokensHandler}
             />
           </Grid>
+
           <Grid item xs={12}>
+            <h3>With monthly fees of ${fees}</h3>
             <TextField
               label="Expected monthly fees"
-              type="number"
+              type="string"
               name="fees"
               margin="normal"
               variant="filled"
@@ -44,16 +60,31 @@ const Form = props => {
               onChange={changeFeesHandler}
             />
           </Grid>
+
           <Grid item xs={12}>
+            <h3>At a stake percentage of {stakeRate}%</h3>
             <TextField
               label="Stake percentage"
-              type="number"
+              type="string"
               name="stakeRate"
               margin="normal"
               variant="filled"
               value={stakeRate}
               onChange={changeStakeHandler}
             />
+            {/* <Typography gutterBottom>Stake Rate</Typography>
+            <Slider
+              //value={stakeRate}
+              getAriaValueText={valuetext}
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              defaultValue={25}
+              step={2.17}
+              marks
+              min={25}
+              max={75}
+              onChange={changeStakeHandler}
+            /> */}
           </Grid>
           <Grid item xs={12}>
             <Button
@@ -66,25 +97,18 @@ const Form = props => {
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <TextField
-              label="Monthly dividends"
-              margin="normal"
-              variant="filled"
-              type="text"
-              value={result}
-              readOnly
-            />
+            <h3>Will net you approx ${dividend}</h3>
           </Grid>
+          {/* <Grid item md={12}>
+            <Exchange />
+          </Grid> */}
         </Grid>
-      </Paper>
-    </Container>
+      </Container>
+    </Card>
   );
 };
 
 // Form.propTypes = {
-//   tokens: PropTypes.number.isRequired,
-//   fees: PropTypes.number.isRequired,
-//   stakeRate: PropTypes.number.isRequired,
 //   changeFeesHandler: PropTypes.func.isRequired,
 //   changeTokensHandler: PropTypes.func.isRequired,
 //   changeStakeHandler: PropTypes.func.isRequired

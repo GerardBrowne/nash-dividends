@@ -1,6 +1,4 @@
 import React from "react";
-import logo from "./logo.png";
-import logo1 from "./logo-1.png";
 import logo2 from "./logo-2.png";
 import "./Header.css";
 

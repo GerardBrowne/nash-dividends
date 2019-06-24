@@ -1,61 +1,65 @@
 import React, { Component } from "react";
-import Form from "./Form";
-
-import "./Calculator.css";
+import CalcForm from "./CalcForm";
 
 class Calculator extends Component {
-  constructor() {
-    super();
-    this.state = {
-      totalTokens: 50000000,
-      tokens: 0,
-      fees: 0,
-      stakeRate: 0,
-      baseRate: 25,
-      result: 0
-    };
-  }
+  // Initial state
+  state = {
+    totalTokens: 50000000,
+    tokens: "",
+    fees: "",
+    stakeRate: "",
+    baseRate: 25,
+    dividend: ""
+  };
 
-  changeTokensHandler = event => {
+  handleTokensChange = event => {
     this.setState({
       tokens: event.target.value
     });
   };
 
-  changeFeesHandler = event => {
+  handleFeesChange = event => {
     this.setState({
       fees: event.target.value
     });
   };
 
-  changeStakeHandler = event => {
+  handleStakeChange = event => {
     this.setState({
       stakeRate: event.target.value
     });
   };
 
+  // NEX dividend formula
   calculateDividends = event => {
     const x =
       ((this.state.fees * this.state.tokens) / this.state.totalTokens) *
       (this.state.stakeRate / 100);
 
-    this.setState({ result: x });
+    this.setState({ dividend: x });
+    // Prevents page reload
     event.preventDefault(event);
   };
 
+  handleChange = input => e => {
+    this.setState({ [input]: e.target.value });
+  };
+
   render() {
-    const { tokens, fees, stakeRate, result } = this.state;
+    const { tokens, fees, stakeRate, dividend } = this.state;
+    const values = { tokens, fees, stakeRate, dividend };
+
     return (
-      <Form
-        tokens={tokens}
-        fees={fees}
-        stakeRate={stakeRate}
-        result={result}
-        changeTokensHandler={this.changeTokensHandler}
-        changeFeesHandler={this.changeFeesHandler}
-        changeStakeHandler={this.changeStakeHandler}
-        calculateDividends={this.calculateDividends}
-      />
+      <div>
+        <CalcForm
+          values={values}
+          handleChange={this.handleChange}
+          handleTokensChange={this.handleTokensChange}
+          handleFeesChange={this.handleFeesChange}
+          handleStakeChange={this.handleStakeChange}
+          calculateDividends={this.calculateDividends}
+        />
+      </div>
     );
   }
 }
