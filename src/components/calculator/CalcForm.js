@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { Card } from "@material-ui/core";
-import Hook from "./Hook";
+// import Hook from "./Hook";
 import Grid from "@material-ui/core/Grid";
 
 export class CalcForm extends Component {
@@ -23,7 +23,7 @@ export class CalcForm extends Component {
           >
             <Grid item xs={12}>
               <TextField
-                label="Enter NEX amount"
+                label="NEX amount"
                 onChange={handleChange("tokens")}
                 defaultValue={values.tokens}
               />
@@ -31,7 +31,7 @@ export class CalcForm extends Component {
             <br />
             <Grid item xs={12}>
               <TextField
-                label="Enter expected monthly fees"
+                label="Expected monthly fees"
                 onChange={handleChange("fees")}
                 defaultValue={values.fees}
               />
@@ -39,7 +39,7 @@ export class CalcForm extends Component {
             <br />
             <Grid item xs={12}>
               <TextField
-                label="Enter stake %"
+                label="Stake %"
                 onChange={handleChange("stakeRate")}
                 defaultValue={values.stakeRate}
               />
@@ -57,7 +57,7 @@ export class CalcForm extends Component {
               </Button>
             </Grid>
             <br />
-            <Hook calculateDividends={this.calculateDividends} />
+            {/* <Hook calculateDividends={this.calculateDividends} /> */}
             <br />
             <h3>${values.dividend}</h3>
           </Grid>

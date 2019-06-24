@@ -12,24 +12,6 @@ class Calculator extends Component {
     dividend: ""
   };
 
-  handleTokensChange = event => {
-    this.setState({
-      tokens: event.target.value
-    });
-  };
-
-  handleFeesChange = event => {
-    this.setState({
-      fees: event.target.value
-    });
-  };
-
-  handleStakeChange = event => {
-    this.setState({
-      stakeRate: event.target.value
-    });
-  };
-
   // NEX dividend formula
   calculateDividends = event => {
     const x =
@@ -54,9 +36,6 @@ class Calculator extends Component {
         <CalcForm
           values={values}
           handleChange={this.handleChange}
-          handleTokensChange={this.handleTokensChange}
-          handleFeesChange={this.handleFeesChange}
-          handleStakeChange={this.handleStakeChange}
           calculateDividends={this.calculateDividends}
         />
       </div>
