@@ -11,6 +11,7 @@ export class CalcForm extends Component {
     return (
       <React.Fragment>
         <Card>
+          <br />
           <Grid
             item
             sm={12}

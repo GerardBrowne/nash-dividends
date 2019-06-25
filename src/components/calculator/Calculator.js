@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CalcForm from "./CalcForm";
+//import SimpleCard from "../common/Card";
 
 class Calculator extends Component {
   // Initial state
@@ -38,6 +39,8 @@ class Calculator extends Component {
           handleChange={this.handleChange}
           calculateDividends={this.calculateDividends}
         />
+        <br />
+        {/* <SimpleCard /> */}
       </div>
     );
   }
