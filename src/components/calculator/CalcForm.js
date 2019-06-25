@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { Card } from "@material-ui/core";
-// import Hook from "./Hook";
 import Grid from "@material-ui/core/Grid";
 
 export class CalcForm extends Component {
@@ -20,7 +19,6 @@ export class CalcForm extends Component {
             direction="column"
             alignItems="center"
             justify="center"
-            //style={{ minHeight: "100vh" }}
           >
             <Grid item xs={12}>
               <TextField
@@ -57,8 +55,6 @@ export class CalcForm extends Component {
                 Submit
               </Button>
             </Grid>
-            <br />
-            {/* <Hook calculateDividends={this.calculateDividends} /> */}
             <br />
             <h3>${values.dividend}</h3>
           </Grid>

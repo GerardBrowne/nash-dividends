@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import CalcForm from "./CalcForm";
-//import SimpleCard from "../common/Card";
+import NexInfo from "../tokenInfo/NexInfo";
 
 class Calculator extends Component {
   // Initial state
   state = {
-    totalTokens: 50000000,
+    totalTokens: 50000000, //never changes
     tokens: "",
     fees: "",
     stakeRate: "",
-    baseRate: 25,
+    baseRate: 25, //min stake percentage(max=75)
     dividend: ""
   };
 
@@ -24,6 +24,7 @@ class Calculator extends Component {
     event.preventDefault(event);
   };
 
+  // Handles input change
   handleChange = input => e => {
     this.setState({ [input]: e.target.value });
   };
@@ -40,7 +41,7 @@ class Calculator extends Component {
           calculateDividends={this.calculateDividends}
         />
         <br />
-        {/* <SimpleCard /> */}
+        <NexInfo />
       </div>
     );
   }

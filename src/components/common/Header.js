@@ -4,9 +4,8 @@ import "./Header.css";
 import Button from "@material-ui/core/Button";
 
 const Header = () => {
-  const url = e => {
+  const url = () => {
     window.open("https://nash.io/referrals?code=21mCNx");
-    e.preventDefault(e);
   };
 
   return (
