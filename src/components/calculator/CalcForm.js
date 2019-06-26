@@ -3,17 +3,11 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { Card } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
-import Slider from "@material-ui/lab/Slider";
 import Typography from "@material-ui/core/Typography";
 
 export class CalcForm extends Component {
   render() {
-    const {
-      values,
-      handleChange,
-      handleDragChange,
-      calculateDividends
-    } = this.props;
+    const { values, handleChange, calculateDividends } = this.props;
     return (
       <React.Fragment>
         <Card>
@@ -39,28 +33,14 @@ export class CalcForm extends Component {
             </Grid>
             <br />
             <Grid item xs={12}>
-              <Typography>With an average TX fee of {values.fee}%</Typography>
-              <Slider
-                defaultValue={0.19}
-                valueLabelDisplay="auto"
-                step={0.01}
-                marks
-                min={0.1}
-                max={0.25}
-                //value={this.values.fee}
-                onChange={handleChange("fee")}
-                onDragStop={handleDragChange}
-              />
-            </Grid>
-            <br />
-            <Grid item xs={12}>
               <Typography>
-                With monthly fees of $<strong>{values.monthlyFees}</strong>
+                With monthly volume of
+                <br />$<strong>{values.monthlyVolume}</strong>
               </Typography>
               <TextField
-                label="Expected monthly fees"
-                onChange={handleChange("monthlyFees")}
-                defaultValue={values.monthlyFees}
+                label="Expected volume/month"
+                onChange={handleChange("monthlyVolume")}
+                defaultValue={values.monthlyVolume}
               />
             </Grid>{" "}
             <br />
@@ -72,6 +52,17 @@ export class CalcForm extends Component {
                 label="Stake %"
                 onChange={handleChange("stakeRate")}
                 defaultValue={values.stakeRate}
+              />
+              <br />
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>
+                And a fee % of <strong>{values.fee}</strong>%
+              </Typography>
+              <TextField
+                label="Fee %"
+                onChange={handleChange("fee")}
+                defaultValue={values.fee}
               />
               <br />
             </Grid>

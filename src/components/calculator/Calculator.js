@@ -7,17 +7,18 @@ class Calculator extends Component {
   state = {
     totalTokens: 50000000, //never changes
     tokens: "", //no. of user's tokens
-    monthlyFees: "", //total fees collected/month
-    fee: 0.19, //average fee per tx
+    fee: 0.19, //average fee per tx, this will be default value
     stakeRate: "", //based on no. of months staked; min:25,max:75
     baseRate: 25, //min stake percentage
-    dividend: "" //total dividend received/month
+    dividend: "", //total dividend received/month
+    monthlyVolume: "" //total volume transacted per month
   };
 
   // NEX dividend formula
   calculateDividends = event => {
     const x =
-      ((this.state.monthlyFees * this.state.tokens) / this.state.totalTokens) *
+      ((this.state.monthlyVolume * (this.state.fee / 100) * this.state.tokens) /
+        this.state.totalTokens) *
       (this.state.stakeRate / 100);
 
     this.setState({ dividend: x });
@@ -30,20 +31,21 @@ class Calculator extends Component {
     this.setState({ [input]: e.target.value });
   };
 
-  handleDragChange = e => {
-    this.setState({ fee: e.target.value });
-  };
-
   render() {
-    const { tokens, monthlyFees, fee, stakeRate, dividend } = this.state;
-    const values = { tokens, monthlyFees, fee, stakeRate, dividend };
+    const { tokens, monthlyVolume, fee, stakeRate, dividend } = this.state;
+    const values = {
+      tokens,
+      monthlyVolume,
+      fee,
+      stakeRate,
+      dividend
+    };
 
     return (
       <div>
         <CalcForm
           values={values}
           handleChange={this.handleChange}
-          handleDragChange={this.handleDragChange}
           calculateDividends={this.calculateDividends}
         />
         <br />
