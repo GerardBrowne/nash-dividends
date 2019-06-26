@@ -13,9 +13,7 @@ export class NexInfo extends Component {
   }
 
   componentDidMount() {
-    this.setState({ loading: true });
-
-    fetch(`${API_URL}`)
+    fetch({ API_URL })
       .then(handleResponse)
       .then(data => {
         this.setState({

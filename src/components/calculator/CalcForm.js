@@ -3,10 +3,17 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { Card } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
+import Slider from "@material-ui/lab/Slider";
+import Typography from "@material-ui/core/Typography";
 
 export class CalcForm extends Component {
   render() {
-    const { values, handleChange, calculateDividends } = this.props;
+    const {
+      values,
+      handleChange,
+      handleDragChange,
+      calculateDividends
+    } = this.props;
     return (
       <React.Fragment>
         <Card>
@@ -21,6 +28,9 @@ export class CalcForm extends Component {
             justify="center"
           >
             <Grid item xs={12}>
+              <Typography>
+                Having <strong>{values.tokens}</strong> NEX
+              </Typography>
               <TextField
                 label="NEX amount"
                 onChange={handleChange("tokens")}
@@ -29,14 +39,35 @@ export class CalcForm extends Component {
             </Grid>
             <br />
             <Grid item xs={12}>
+              <Typography>With an average TX fee of {values.fee}%</Typography>
+              <Slider
+                defaultValue={0.19}
+                valueLabelDisplay="auto"
+                step={0.01}
+                marks
+                min={0.1}
+                max={0.25}
+                //value={this.values.fee}
+                onChange={handleChange("fee")}
+                onDragStop={handleDragChange}
+              />
+            </Grid>
+            <br />
+            <Grid item xs={12}>
+              <Typography>
+                With monthly fees of $<strong>{values.monthlyFees}</strong>
+              </Typography>
               <TextField
                 label="Expected monthly fees"
-                onChange={handleChange("fees")}
-                defaultValue={values.fees}
+                onChange={handleChange("monthlyFees")}
+                defaultValue={values.monthlyFees}
               />
             </Grid>{" "}
             <br />
             <Grid item xs={12}>
+              <Typography>
+                And a stake rate of <strong>{values.stakeRate}</strong>%
+              </Typography>
               <TextField
                 label="Stake %"
                 onChange={handleChange("stakeRate")}
@@ -56,7 +87,7 @@ export class CalcForm extends Component {
               </Button>
             </Grid>
             <br />
-            <h3>${values.dividend}</h3>
+            <h3>Total Dividends: ${values.dividend}</h3>
           </Grid>
         </Card>
       </React.Fragment>
