@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import CalcForm from "./CalcForm";
-import NexInfo from "../tokenInfo/NexInfo";
 
 class Calculator extends Component {
   // Initial state
@@ -8,10 +7,10 @@ class Calculator extends Component {
     totalTokens: 50000000, //never changes
     tokens: "", //no. of user's tokens
     fee: 0.19, //average fee per tx, this will be default value
-    stakeRate: "", //based on no. of months staked; min:25,max:75
     baseRate: 25, //min stake percentage
     dividend: "", //total dividend received/month
-    monthlyVolume: "" //total volume transacted per month
+    monthlyVolume: "", //total volume transacted per month
+    stakeLength: "" //no. of months locked in for
   };
 
   // NEX dividend formula
@@ -19,7 +18,7 @@ class Calculator extends Component {
     const x =
       ((this.state.monthlyVolume * (this.state.fee / 100) * this.state.tokens) /
         this.state.totalTokens) *
-      (this.state.stakeRate / 100);
+      (((this.state.stakeLength - 1) * 2.17 + this.state.baseRate) / 100);
 
     this.setState({ dividend: x });
     // Prevents page reload
@@ -32,12 +31,12 @@ class Calculator extends Component {
   };
 
   render() {
-    const { tokens, monthlyVolume, fee, stakeRate, dividend } = this.state;
+    const { tokens, monthlyVolume, fee, stakeLength, dividend } = this.state;
     const values = {
       tokens,
       monthlyVolume,
       fee,
-      stakeRate,
+      stakeLength,
       dividend
     };
 
@@ -49,7 +48,6 @@ class Calculator extends Component {
           calculateDividends={this.calculateDividends}
         />
         <br />
-        <NexInfo />
       </div>
     );
   }
