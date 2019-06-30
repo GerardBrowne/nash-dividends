@@ -1,10 +1,19 @@
 body {
-  /* background-color: #0c2033; */
   font-family: "roboto", open-sans;
-  color: #000;
+  color: #fff;
   letter-spacing: 0.5px;
   font-size: 16px;
   font-weight: 300;
+  background-image: linear-gradient(
+      to right bottom,
+      rgb(78, 160, 246, 0.8),
+      rgb(6, 74, 173, 0.8)
+    ),
+    url(./logo-1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin: 0px;
 }
 
 /* Remove close icon from input on IE */
