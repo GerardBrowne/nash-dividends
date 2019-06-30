@@ -5,6 +5,10 @@
   height: 70px;
 }
 
+.AppBar {
+  margin: 0;
+}
+
 .Header-logo {
   position: absolute;
   top: 15px;

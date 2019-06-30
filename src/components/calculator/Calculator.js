@@ -10,13 +10,16 @@ class Calculator extends Component {
     baseRate: 25, //min stake percentage
     dividend: "", //total dividend received/month
     monthlyVolume: "", //total volume transacted per month
-    stakeLength: "" //no. of months locked in for
+    stakeLength: 24 //no. of months locked in for
   };
 
   // NEX dividend formula
   calculateDividends = event => {
     const x =
-      ((this.state.monthlyVolume * (this.state.fee / 100) * this.state.tokens) /
+      ((this.state.monthlyVolume *
+        1000000000 *
+        (this.state.fee / 100) *
+        this.state.tokens) /
         this.state.totalTokens) *
       (((this.state.stakeLength - 1) * 2.17 + this.state.baseRate) / 100);
 

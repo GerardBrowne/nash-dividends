@@ -4,9 +4,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import logo1 from "./logo-1.png";
+import logo2 from "./logo-2.png";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/core/Menu";
 import "./Header.css";
 
 const useStyles = makeStyles(theme => ({
@@ -29,22 +28,20 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="primary">
         <Toolbar>
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="Menu"
-          >
-            <MenuIcon />
-          </IconButton>
+          />
           <Typography variant="h6" className={classes.title}>
-            <img src={logo1} alt="logo" className="Header-logo" />
+            <img src={logo2} alt="logo" className="Header-logo" />
           </Typography>
 
-          <Button color="primary" onClick={url}>
-            Create your Nash Exchange account now
+          <Button color="inherit" onClick={url}>
+            Create Nash Exchange account
           </Button>
         </Toolbar>
       </AppBar>
