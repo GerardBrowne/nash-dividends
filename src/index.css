@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 body {
   font-family: "roboto", open-sans;
   color: #fff;
@@ -6,8 +10,8 @@ body {
   font-weight: 300;
   background-image: linear-gradient(
       to right bottom,
-      rgb(78, 160, 246, 0.8),
-      rgb(6, 74, 173, 0.8)
+      rgb(13, 64, 131, 0.9),
+      rgb(66, 135, 193, 0.9)
     ),
     url(./logo-1.png);
   background-repeat: no-repeat;
